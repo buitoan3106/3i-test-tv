@@ -66,38 +66,69 @@ const TextBox: React.FC<TextBoxProps> = ({ title, className, showTime }) => {
     ];
 
     return (
-        <div className={`w-full border-[1px] border-[#038DC5] p-[10px] ${className}`}>
+        <div className={`w-full overflow-y-hidden h-full border-[1px] border-[#038DC5] p-[10px] ${className}`}>
             <h2 className="text-white uppercase font-semibold mb-[20px]">
                 <span className="border-b-[1px] mr-[7px]">{title}</span>
                 <span>{showTime && getCurrentDate()}</span>
             </h2>
-            <ul>
-                {textBoxData && textBoxData.map((item) => (
-                    <li key={item.id} className="py-[10px] border-b-[1px] border-dashed border-[#09AA1A] last:border-b-0">
-                        <div className="text-[#09AA1A]">
-                            <AwesomeIcon icon={faNewspaper} className="mr-[7px]" />
-                            <span>{item.title}</span>
-                        </div>
-                        <div className="text-[#3071AB] pl-[10px] text-[12px]">
-                            <AwesomeIcon icon={faCalendarDays} className="mr-[7px]" />
-                            <span>{item.published}</span>
-                        </div>
-                        {item.files.length > 0 &&
-                            <div className="mt-[10px] pl-[10px] text-[12px] text-white">
-                                <ul className="inline-block min-w-[150px]">
-                                    {item.files.map ((file) => (
-                                        <li key={file.id} className="flex flex-wrap items-center mb-[5px]">
-                                            <TypeFile type={file.type} className="mr-[7px]" />
-                                            <span className="flex-1">{file.title}</span>
-                                            <Link href={file.pathFile} className="ml-[7px]"><AwesomeIcon icon={faDownload} /></Link>
-                                        </li>
-                                    ))}
-                                </ul>
+            <div className='relative flex overflow-y-hidden h-full'>
+                {/* <ul>
+                    {textBoxData && textBoxData.map((item) => (
+                        <li key={item.id} className="py-[10px] border-b-[1px] border-dashed border-[#09AA1A] last:border-b-0">
+                            <div className="text-[#09AA1A]">
+                                <AwesomeIcon icon={faNewspaper} className="mr-[7px]" />
+                                <span>{item.title}</span>
                             </div>
-                        }
-                    </li>
-                ))}
-            </ul>
+                            <div className="text-[#3071AB] pl-[10px] text-[12px]">
+                                <AwesomeIcon icon={faCalendarDays} className="mr-[7px]" />
+                                <span>{item.published}</span>
+                            </div>
+                            {item.files.length > 0 &&
+                                <div className="mt-[10px] pl-[10px] text-[12px] text-white">
+                                    <ul className="inline-block min-w-[150px]">
+                                        {item.files.map((file) => (
+                                            <li key={file.id} className="flex flex-wrap items-center mb-[5px]">
+                                                <TypeFile type={file.type} className="mr-[7px]" />
+                                                <span className="flex-1">{file.title}</span>
+                                                <Link href={file.pathFile} className="ml-[7px]"><AwesomeIcon icon={faDownload} /></Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                        </li>
+                    ))}
+                </ul> */}
+                <div className='absolute h-full py-12 animate-marquee2 overflow-y-hidden delay-500'>
+                    <ul>
+                        {textBoxData && textBoxData.map((item) => (
+                            <li key={item.id} className="py-[10px] border-b-[1px] border-dashed border-[#09AA1A] last:border-b-0">
+                                <div className="text-[#09AA1A]">
+                                    <AwesomeIcon icon={faNewspaper} className="mr-[7px]" />
+                                    <span>{item.title}</span>
+                                </div>
+                                <div className="text-[#3071AB] pl-[10px] text-[12px]">
+                                    <AwesomeIcon icon={faCalendarDays} className="mr-[7px]" />
+                                    <span>{item.published}</span>
+                                </div>
+                                {item.files.length > 0 &&
+                                    <div className="mt-[10px] pl-[10px] text-[12px] text-white">
+                                        <ul className="inline-block min-w-[150px]">
+                                            {item.files.map((file) => (
+                                                <li key={file.id} className="flex flex-wrap items-center mb-[5px]">
+                                                    <TypeFile type={file.type} className="mr-[7px]" />
+                                                    <span className="flex-1">{file.title}</span>
+                                                    <Link href={file.pathFile} className="ml-[7px]"><AwesomeIcon icon={faDownload} /></Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                }
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     );
 }

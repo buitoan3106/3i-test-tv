@@ -83,11 +83,23 @@ module.exports = {
           '100%': {
               transform: 'perspective(400px)'
           }
+        },
+        marquee: {
+          '0%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateY(100%)' },
+          '45%': { transform: 'translateY(-5%)' },
+          '75%': { transform: 'translateY(-5%)' },
+          '100%': { transform: 'translateY(-60%)' },
         }
       },
       animation: {
         fadeInDown: 'fadeInDown 1s ease-in-out infinite',
-        flipInY: 'flipInY 1s ease-in'
+        flipInY: 'flipInY 1s ease-in',
+        marquee: 'marquee 30s linear infinite',
+        marquee2: 'marquee2 60s linear infinite',
       }
     },
   },
